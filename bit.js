@@ -230,7 +230,7 @@ const sync = async function(type, hash) {
         outsock.send(['mempool', JSON.stringify(content)])
       } catch (e) {
         // duplicates are ok because they will be ignored
-        if (e.code == 11000) {
+        if (e.code == 11000 || e.code == 17280) {
           console.log('Duplicate mempool item: ', content)
         } else {
           console.log('## ERR ', e, content)

@@ -39,7 +39,7 @@ var mempool =  {
       if (chunk.length > 0) {
         await db.collection('unconfirmed').insertMany(chunk, { ordered: false }).catch(function(err) {
           // duplicates are ok because they will be ignored
-          if (err.code !== 11000) {
+          if (e.code !== 11000 && e.code !== 17280) {
             console.log('## ERR ', err, items)
             process.exit()
           }
@@ -77,7 +77,7 @@ var block = {
       if (chunk.length > 0) {
         await db.collection('confirmed').insertMany(chunk, { ordered: false }).catch(function(err) {
           // duplicates are ok because they will be ignored
-          if (err.code !== 11000) {
+          if (e.code !== 11000 && e.code !== 17280) {
             console.log('## ERR ', err, items)
             process.exit()
           }
@@ -99,7 +99,7 @@ var block = {
           console.log('..chunk ' + index + ' processed ...')
         } catch (e) {
           // duplicates are ok because they will be ignored
-          if (e.code !== 11000) {
+          if (e.code !== 11000 && e.code !== 17280) {
             console.log('## ERR ', e, items, block_index)
             process.exit()
           }
