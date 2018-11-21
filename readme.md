@@ -4,6 +4,7 @@
 * cd bitdb-testnet
 * npm install
 * npm install -g pm2
+* pm2 install pm2-logrotate
 
 ### Configure
 * Set your bitcoin RPC host, RPC username, and RPC password in process.json
